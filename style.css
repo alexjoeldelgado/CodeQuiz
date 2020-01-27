@@ -1,0 +1,36 @@
+
+#topbar {
+    width: 100%;
+    margin: 0;
+}
+#highscores {
+    float: left;
+    margin: 0;
+} 
+#timer {
+    float: right;;
+}
+#container {
+ margin: 30px auto; 
+ float: none;
+}
+h1, #intro {
+    text-align: center;
+}
+#return {
+    margin-left: 30%;
+}
+#startQuiz {
+    margin-left: 45%;
+}
+button {
+    background-color: purple;
+    color: white;
+    border-radius: 5px;
+}
+li {
+    background-color: violet;
+}
+li:nth-child(even) {
+    background-color: white;
+}
