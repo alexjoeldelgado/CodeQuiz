@@ -6,75 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="topbar">
-        <div class="highscores">
-            <a href="">View High Scores</a>
+    <div id="topbar">
+        <div id="highscores">
+            <a id="viewHS" href="#" onclick="viewHS()">View High Scores</a>
         </div>
-        <div class="timer"></div>
+        <div id="timer">
+            <h3 id="counter"></h3>
+        </div>
     </div>
-    <div class="container">
-        <h1>Coding Quiz Challenge</h1>
-        <p>Please try to answer as many questions as possible! Your score will be shown at the end of the quiz or when the timer runs out!</p>
-        <ol class="answerList"></ol>
-        <button class="startQuiz">Begin</button>
+    <br>
+    <div id="container" class="col-6">
+        <h1 id="title">Coding Quiz Challenge</h1>
+        <p id="intro">Please try to answer as many questions as possible! Your score will be shown at the end of the quiz or when the timer runs out!</p>
+        <button id="startQuiz">Begin</button>
+        <div id="quiz" style="display: none;">
+            <div id="question"></div>
+            <div id="choices">
+                <div class="choices" id="A" onclick="checkAnswer('A')"></div>
+                <div class="choices" id="B" onclick="checkAnswer('B')"></div>
+                <div class="choices" id="C" onclick="checkAnswer('C')"></div>
+                <div class="choices" id="D" onclick="checkAnswer('D')"></div>
+            </div>
+        </div>
+        
+        <div id="resultsScreen" style="display: none;">
+            <h1>All Done!</h1>
+            <div id="scoreDiv"></div>
+            <form class="form-inline">
+                <div class="">
+                  <p>Please enter your Initials:
+                  <input type="text" id="initials" placeholder="AAA">
+                  <button id="submitInitials" type="button">Submit</button>
+                  </p>
+                </div>
+                
+              </form>
+        </div>
+        <div id="score" style="display: none"></div>
+        <div id="highScores" style="display: none;">
+            <h1>High Scores</h1>
+            <ol id="highScoreList"></ol>
+            <button id="return">Return to Beginning</button>
+            <button id="clearHighScores">Clear High Scores</button>
+        </div>
+        <hr>
+        <div id="answerIsCorrect" style="display: none;"><h1>Correct!</h1></div>
+        <div id="answerIsWrong" style="display: none;"><h1>Wrong!</h1></div>
+        <div id="gameOver" style="display: none;"><h1>Game Over</h1></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-    
-    var quesArray = ["Hello?", "how are you?", "Where are you?"]
-    var ansArray = [set1 = ["Hello", "Bye", "Banana"], set2 = ["I'm Fine", "You suck", "Bitch"], set3 = ["Home", "yass", "Japan"]]
-    
-// Create a function that replaces p tag with on ordered list containing possible answers. // create a function that replaces h1 tag with question from question array
-    function newQuestion1() {
-        $("p").text("");
-        $("li").remove();
-        $("button").remove();
-        $("h1").text(quesArray[0]);
-            for (i = 0; i < 3; i++){
-                $(".answerList").append($("<li>").append($("<button>").text(set1[i])));        
-                console.log($("button").text());
-                }
-        var buttonText = $("button").text()
-        $("button").on("click", newQuestion2)};
-
-    function newQuestion2() {
-        $("p").text("");
-        $("li").remove();
-        $("h1").text(quesArray[1]);
-            for (i = 0; i < 3; i++){
-                $(".answerList").append($("<li>").append($("<button>").text(set2[i])));        
-            }
-        $("button").on("click", newQuestion3)}
-
-    function newQuestion3() {
-        $("p").text("");
-        $("li").toggle();
-        $("h1").text(quesArray[2]);
-            for (i = 0; i < 3; i++){
-                $(".answerList").append($("<li>").append($("<button>").text(set3[i]).attr("class", i)));
-                        
-            }
-            
-        $("button").on("click", newQuestion1)}
-    
-    function timer(){
-        var sec = 90;
-        var timer = setInterval(function(){
-        $(".timer").append("<p>").text(sec);
-        sec--;
-        if (sec < 0) {
-            clearInterval(timer);
-        }
-    },1000);
-}
-    
-    // creat an event listener that responds to the startQuiz button
-    $(".startQuiz").on("click",newQuestion1);
-    $(".startQuiz").on("click",timer)
-
-    // Create an event listener for each answer in the quiz
+    <script src="script.js">
     </script>
 </body>
 </html>
