@@ -56,7 +56,7 @@ var questions = [
         $question: "How do you write 'Hello World' in an alert box?",
         $choiceA: "prompt('Hello World');",
         $choiceB: "alertbox('Hello World');",
-        $choiceC: "alert('Hello World);",
+        $choiceC: "alert('Hello World');",
         $choiceD: "msg('Hello World');",
         correct: "C",
     },{
@@ -85,7 +85,7 @@ var questions = [
 
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
-var count = 75;
+var count = 80;
 var quizTime = 0;
 
 function displayQuestion(){
@@ -107,7 +107,7 @@ function displayCounter(){
 
 function startQuiz(){
     currentQuestion = 0;
-    count = 75;
+    count = 80;
     $startQuiz.hide();
     $title.hide();
     $intro.hide();

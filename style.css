@@ -23,6 +23,9 @@ button {
     color: white;
     border-radius: 5px;
 }
+form {
+    text-align: center;
+}
 li {
     background-color: violet;
 }
