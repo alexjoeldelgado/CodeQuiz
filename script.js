@@ -159,6 +159,7 @@ $submitInit.on("click", function(event){
     event.preventDefault();
     $resultsScreen.hide();  
     $highScores.show();
+    $topbar.hide();
     addScore();
     console.log($initials)
 })

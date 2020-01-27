@@ -13,15 +13,10 @@
 #container {
  margin: 30px auto; 
  float: none;
+ text-align: center;
 }
 h1, #intro {
     text-align: center;
-}
-#return {
-    margin-left: 30%;
-}
-#startQuiz {
-    margin-left: 45%;
 }
 button {
     background-color: purple;
