@@ -85,8 +85,9 @@ var questions = [
 
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
-var count = 80;
+var count = 100;
 var quizTime = 0;
+var timer;
 
 function displayQuestion(){
     var q = questions[currentQuestion];
@@ -102,12 +103,12 @@ function displayCounter(){
         $counter.html("<p>" + count + "</p>");
         count--;
     } else {
-        clearInterval();
+        clearInterval(timer);
     }};
 
 function startQuiz(){
     currentQuestion = 0;
-    count = 80;
+    count = 100;
     $startQuiz.hide();
     $title.hide();
     $intro.hide();
@@ -115,7 +116,8 @@ function startQuiz(){
     $quiz.show();
     $counter.show();
     displayCounter();
-    var timer = setInterval(displayCounter,1000);
+    clearInterval(timer);
+    timer = setInterval(displayCounter,1000);
 }
 function correctResult(){
     $answerIsCorrect.fadeIn(500);
@@ -130,7 +132,7 @@ function gameOver(){
     $gameOver.fadeOut(500);
     $quiz.hide();
     $counter.hide();
-    clearInterval(displayCounter);
+    clearInterval(timer);
     console.log(score);
     $resultsScreen.show();
     $scoreDiv.append("<p>Your score is " + score + "!</p>");
@@ -155,6 +157,9 @@ function checkAnswer(answer) {
         gameOver();
     }
 }
+if (count == 0) {
+    gameOver();
+}
 $submitInit.on("click", function(event){
     event.preventDefault();
     $resultsScreen.hide();  
@@ -163,9 +168,21 @@ $submitInit.on("click", function(event){
     addScore();
     console.log($initials)
 })
+
+// var highScoreArray = []
+// var scores = JSON.parse(localStorage.getItem("scores"));
+// console.log(scores)
+// highScoreArray.push(scores)
+// for (i = 0; i < highScoreArray.length; i++){
+//     $highScoreList.append($("<li>").text(scores[i]))
+// } 
+
 function addScore(){
-    var $newLi = $("<li>");
-    $newLi.text($initials.val() + " " + score);
+    var $newLi = $("<li>")
+    var HSitem = $initials.val() + " " + score;
+    $newLi.text(HSitem);
+    // highScoreArray.push(HSitem);
+    // localStorage.setItem("scores", JSON.stringify(highScoreArray))
     $highScoreList.append($newLi);
 }
 $return.on("click", function(){
@@ -176,11 +193,13 @@ $return.on("click", function(){
     $intro.show();
     $topbar.show();
     $scoreDiv.empty();
+    clearInterval(timer);
 })
 $clearHighScores.on("click", function(){
     $highScoreList.empty();
 })
 $startQuiz.on("click",startQuiz);
+
 function viewHS (){
     $topbar.hide();
     $title.hide();
@@ -189,6 +208,7 @@ function viewHS (){
     $quiz.hide();
     $resultsScreen.hide();
     $highScores.show();
+    clearInterval(timer);
 }
 
 
